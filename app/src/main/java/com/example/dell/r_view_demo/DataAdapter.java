@@ -4,6 +4,11 @@ package com.example.dell.r_view_demo;
  * Created by DELL on 12/5/2016.
  */
 
+
+//We pass Androidversion model class as ArrayList in constructor.
+// We obtain the Android version name, version number,
+// API level from the AndroidVersion object using the getter methods and set it to TextView widgets.
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;

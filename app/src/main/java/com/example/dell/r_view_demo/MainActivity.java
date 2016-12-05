@@ -38,12 +38,25 @@ public class MainActivity extends AppCompatActivity {
         loadJSON();
     }
     private void loadJSON(){
+        //initialize Retrofit and carry out network operations
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://api.learn2crack.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+        //RequestInterface object is created using
         RequestInterface request = retrofit.create(RequestInterface.class);
+
+      //  To carry out a asyncronous request Call object should be created from RequestInterface object by calling getJSON() method.
         Call<JSONResponse> call = request.getJSON();
+
+        //The Asyncronous request is executed by calling enqueue() method on the call object.
+        // If the request is success and response is received onResponse() callback method is executed.
+        // The JSONResponse object is obtained by calling body() method on the Response object.
+        // From the JSONResponse object we obtain the AndroidVersion array object.
+        // We convert the AndroidVersion array object to ArrayList.
+        // Finally a new DataAdapter object is created and set to RecyclerView using setAdapter() method.
         call.enqueue(new Callback<JSONResponse>() {
             @Override
             public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
